@@ -1,22 +1,14 @@
-/************************************************
-  REMOVE ALL COMMENTS BEFORE SUBMITTING YOUR HOMEWORK
-*************************************************/
-
 // STEPS
 // 1. Declare a class for database methods encapsulating all SQL statements
 // 2. Exports the database object instantiated from the database class, passing connection object to the class constructor
 
-
-// As suggested in README.md guideline for this homework, you can choose to use constructor functions or class to develop the functions
-//  for SQL statements. Since class gives you cleaner syntax, this pseudo code is assumed that you use class for the implementation of
-//  SQL statements. Remember both constructor functions and classes are to be used to create objects.
+// As suggested in README.md guideline for this homework, you can choose to use constructor functions or class to develop the function for SQL statements. Since class gives you cleaner syntax, this pseudo code is assumed that you use class for the implementation of SQL statements. Remember both constructor functions and classes are to be used to create objects.
 
 // HINT: To use promise wrapper, for example:
 //  const databaseConnection = mysql.createConnection({...});
 //  databaseConnection.promise().query(...);
 //
-//  - the whole query statement needs to be returned in the same line for the caller to receive the data with promise .then or async/await
-//        for example: return databaseConnection.promise().query(...);
+//  - the whole query statement needs to be returned in the same line for the caller to receive the data with promise .then or async/await for example: return databaseConnection.promise().query(...);
 //  - all queries that take in parameters need to be prepared statements
 
 // =============

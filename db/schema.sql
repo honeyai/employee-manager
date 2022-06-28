@@ -1,7 +1,7 @@
 DROP DATABASE IF EXISTS employees;
 CREATE DATABASE employess;
 
-USE your_database;
+USE employees;
 
 CREATE TABLE department (
   -- id set to ainteger, automatic increment, and primary key

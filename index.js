@@ -1,47 +1,51 @@
-
-/*
-  REMOVE COMMENTS BEFORE SUBMITTING YOUR HOMEWORK
-*/
-
-// Import inquirer
+const { prompt } = require("inquirer");
 const inquirer = require("inquirer");
-// Optional: import asciiart-logo
-const ascii = require("asciiart-logo");
-// import your database module
 const db = require("./db");
-
-// Import console table for logging information on screen in table format
+const question = require("./Util/questions.js");
 require("console.table");
 
-// Call startup function
-startup();
-// function: start up
-function startup() {
+const startup = async () => {
   console.log("started")
-  //display logo text
   const logo = require('asciiart-logo');
   console.log(logo({
-    name:"Employee Manager"
+    name: "Employee Manager",
+    font: "Bolger",
+    logoColor: "bold-blue"
   }
-  ).render()); 
+  ).render());
   //load main prompts using asciiart-logo
-  //questions();
+  try {
+    let answers = await promptUser();
+  } catch (error) {
+    console.error(error.message);
+  }
 }
 
-
 // function - main prompt for questions
-// - Prompt with the list of choices
-// - In .then callback, check user's response with the switch-case statement.
-//    call the appropriate function depending on what the user chose
-//      - in case of view employees, call the view employees function
-//      - in case of add employee, call the add employee function
-//      - in case of update employee's role, call the update employee role function
-//      - in case of view departments, call the view departments function
-//      - in case of add department, call the add department function
-//      - in case of view roles, call the view roles function
-//      - in case of add role, call the add role function
-//      - in default, call function to quit
-//
+const promptUser = async () => await prompt(question).then(res => {
+  console.log("choice", res.userChoice);
+  switch (res.userChoice) {
+    case "ve":
+      return viewEmployees();
+    case "ae":
+      return addEmployee();
+    case "uer":
+      return updateRole();
+    case "vd":
+      return viewDepartments();
+    case "ad":
+      return addDepartment();
+    case "viewRoles":
+      return viewRoles();
+    case "addRole":
+      return addRole();
+    case "quit" :
+      return exit();
+    default:
+      return exit();
+  }
+}
+);
 // OPTIONAL:
 //      - in case of update employee's manager, call the update employee manager function
 //      - in case of view employees by manager, call the view employees by manager function
@@ -52,29 +56,61 @@ function startup() {
 //      - in case of remve employee, call the remove employee function
 //      - in default, call function to quit
 
-// function - View all employees
-  // 1. call find all employees method on database connection
-  //    in .then callback, display returned data with console table method
-  // 2. call function to load main prompt for questions
-  //
+// 1. call find all employees method on database connection
+//    in .then callback, display returned data with console table method
+// 2. call function to load main prompt for questions
+//
+async function viewEmployees() {
+  try {
+    console.log("called viewEmployees");
+    promptUser();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
 
 // function - View all roles
 // 1. call find all roles method on database connection
 //    in .then callback, dispalay returned data with console table
 // 2. call function to load main prompt for questons
 //
+async function viewRoles() {
+  try {
+    console.log("called viewRoles");
+    promptUser();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
 // function - View all deparments
 //  1. call find all departments method on database connnection
 //      in .then call back, display returned data with console table
 //  2. call function to load main prompt for questions
 //
+async function viewDepartments() {
+  try {
+    console.log("called viewDepartments");
+    promptUser();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
 // Add a department
 //  1. prompt user for the name of the department
 //      in .then callback, call create department method on database connection, passing the returned data as input argument
 //  2. call function to load main prompt for questions
 //
+async function addDepartment() {
+  try {
+    console.log("called addDepartment");
+    promptUser();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
 // functon - Add a role
 //  **prompt for user to enter the role, the salary, and what department the role belongs to
@@ -84,6 +120,14 @@ function startup() {
 //      in .then callback, call funcon to create role on database connection, passing returned data from prompt as input argument
 //  3. call function to load main prompt for questions
 //
+async function addRole() {
+  try {
+    console.log("called addRole");
+    promptUser();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
 // function - Add a new employee
 //  1. prompt for first_name and last_name
@@ -98,6 +142,15 @@ function startup() {
 //      in .then callback, create an employee object with variables for first name, last name, role id, manager id
 //  6. call function to create employee on database connection, passing the employee object as input argument
 //      in .then callback, call function to load main prompt for questions
+async function addEmployee() {
+  try {
+    console.log("called addEmployee");
+    promptUser();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
+
 
 // function - Update an employee's role
 //  1. call function to find all employees on database connection
@@ -116,9 +169,20 @@ function startup() {
 //  5. call function to update employee role, passing employee id variable and role id variable as input arguments
 //  6. call fucntion to load main prompt of questions
 
+async function updateRole() {
+  try {
+    console.log("called updateRole");
+
+    promptUser();
+  } catch (error) {
+    console.error(error.message);
+  }
+}
 
 // function - Exit the application
-
+function exit() {
+  console.log("Goodbye!");
+}
 // ========================
 //  OPTIONAL
 // ========================
@@ -137,3 +201,4 @@ function startup() {
 
 // function - Delete a role
 
+startup();

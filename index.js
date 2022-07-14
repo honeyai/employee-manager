@@ -63,6 +63,10 @@ const promptUser = async () => await prompt(question).then(res => {
 async function viewEmployees() {
   try {
     console.log("called viewEmployees");
+    db.findAllEmployees()
+      .then((employees) => {
+        console.log("All employees:", employees);
+      })
     promptUser();
   } catch (error) {
     console.error(error.message);

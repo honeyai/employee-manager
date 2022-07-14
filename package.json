@@ -4,14 +4,19 @@
   "description": "Manage your employees through your command line.",
   "main": "index.js",
   "scripts": {
-    "start": "node index"
+    "start": "node index",
+    "dev": "nodemon index"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "asciiart-logo": "^0.2.6",
     "console.table": "^0.10.0",
+    "dotenv": "^16.0.1",
     "inquirer": "^7.0.0",
-    "mysql2": "^2.1.0"
+    "mysql2": "^2.1.0",
+    "nodemon": "^2.0.19",
+    "promisify": "^0.0.3",
+    "util": "^0.12.4"
   }
 }

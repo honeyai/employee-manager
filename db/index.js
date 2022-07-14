@@ -1,7 +1,16 @@
-// STEPS
-// 1. Declare a class for database methods encapsulating all SQL statements
-// 2. Exports the database object instantiated from the database class, passing connection object to the class constructor
+const db = require("./connection.js");
+const util = require("util");
 
+db.query = util.promisify(db.query);
+
+class DB {
+  findAllEmployees(){
+    console.log("Finding your Employees");
+    return db.query("SELECT * FROM employees e JOIN roles r ON e.role_id = r.id")
+  }
+}
+
+module.exports = new DB()
 // As suggested in README.md guideline for this homework, you can choose to use constructor functions or class to develop the function for SQL statements. Since class gives you cleaner syntax, this pseudo code is assumed that you use class for the implementation of SQL statements. Remember both constructor functions and classes are to be used to create objects.
 
 // HINT: To use promise wrapper, for example:
@@ -19,6 +28,7 @@
 // class - for database or database access object
 //  1. constructor - takes in database connection as input parameter and assign it to the instant variable
 //  2. method - find all employees, join with roles and departments to display their roles, salaries, departments, and managers
+// const 
 //  3. method - create a new employee - takes employee object as input parameter
 //  4. method - update employee's role - takes employee id and role id as input parameters
 //  5. method - find all roles - join with departments to diplay department names
